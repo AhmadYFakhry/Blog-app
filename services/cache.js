@@ -1,20 +1,20 @@
 const mongoose = require("mongoose");
 const redis = require("redis");
 const util = require("util");
+const keys = require('../config/keys')
 
-const redisUrl = "redis://127.0.0.1:6379";
-const client = redis.createClient(redisUrl);
+const client = redis.createClient(process.env.redisUrl);
 client.hget = util.promisify(client.hget);
 const exec = mongoose.Query.prototype.exec;
 
-mongoose.Query.prototype.cache = async function(options = {}) {
+mongoose.Query.prototype.cache = async function (options = {}) {
   this.useCache = true;
   this.hashKey = JSON.stringify(options.key) || "";
   // Makes it chainable
   return this;
 };
 
-mongoose.Query.prototype.exec = async function() {
+mongoose.Query.prototype.exec = async function () {
   if (!this.useCache) {
     return exec.apply(this, arguments);
   }
@@ -28,9 +28,9 @@ mongoose.Query.prototype.exec = async function() {
   // if we do return that
   if (cacheValue) {
     const doc = JSON.parse(cacheValue);
-    return Array.isArray(doc)
-      ? doc.map(d => new this.model(d))
-      : new this.model(doc);
+    return Array.isArray(doc) ?
+      doc.map(d => new this.model(d)) :
+      new this.model(doc);
   }
   // Otherwise query Mongo and save it
   const result = await exec.apply(this, arguments);

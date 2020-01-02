@@ -21,7 +21,7 @@
     ]
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "env-cmd -f ./vars.env node index.js",
     "server": "env-cmd -f ./vars.env nodemon index.js --ignore tests",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
