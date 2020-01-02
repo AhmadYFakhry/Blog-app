@@ -10,6 +10,6 @@ module.exports = {
   googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
   mongoURI: process.env.MONGODB_URI,
   cookieKey: process.env.COOKIE_KEY,
-  port: process.env.PORT
+  port: process.env.PORT,
   redisUrl: process.env.REDIS_URL
 };
