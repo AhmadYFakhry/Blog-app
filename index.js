@@ -6,7 +6,10 @@ const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 const bodyParser = require("body-parser");
-const { mongoURI, cookieKey } = require("@config/keys");
+const {
+  mongoURI,
+  cookieKey
+} = require("@config/keys");
 const path = require("path");
 
 // DB and Passport
@@ -22,7 +25,7 @@ const setupBlogRoutes = require("@routes/blogRoutes");
 // Server and DB Settings
 const PORT = process.env.PORT;
 mongoose.Promise = global.Promise;
-mongoose.connect(mongoURI, {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
