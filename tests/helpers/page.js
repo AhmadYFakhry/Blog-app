@@ -32,7 +32,7 @@ class CustomPage {
             name: "express:sess.sig",
             value: sig
         });
-        await this.page.goto("http://localhost:5000/blogs");
+        await this.page.goto("http://localhost:3000/blogs");
         await this.page.waitForSelector('a[href="/auth/logout"]');
     }
     async getContentsOf(selector) {

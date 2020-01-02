@@ -6,7 +6,10 @@ const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 const bodyParser = require("body-parser");
-const { mongoURI, cookieKey } = require("@config/keys");
+const {
+  mongoURI,
+  cookieKey
+} = require("@config/keys");
 const path = require("path");
 
 // DB and Passport
@@ -44,7 +47,7 @@ setupAuthRoutes(app);
 setupBlogRoutes(app);
 
 // Production-only settings
-if (["production"].includes(process.env.NODE_ENV)) {
+if (["production", "ci"].includes(process.env.NODE_ENV)) {
   app.use(express.static("client/build"));
   app.get("*", (req, res) =>
     res.sendFile(path.resolve("client", "build", "index.html"))
