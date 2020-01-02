@@ -47,12 +47,12 @@ setupAuthRoutes(app);
 setupBlogRoutes(app);
 
 // Production-only settings
-if (["production", "ci"].includes(process.env.NODE_ENV)) {
-  app.use(express.static("client/build"));
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve("client", "build", "index.html"))
-  );
-}
+// if (["production", "ci"].includes(process.env.NODE_ENV)) {
+app.use(express.static("client/build"));
+app.get("*", (req, res) =>
+  res.sendFile(path.resolve("client", "build", "index.html"))
+);
+// }
 
 // Start Server
 app.listen(PORT, () => console.log(`Listening on port`, PORT));
