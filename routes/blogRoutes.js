@@ -25,9 +25,11 @@ module.exports = app => {
   app.post("/api/blogs", authenticate, cleanCache, async (req, res) => {
     const {
       title,
-      content
+      content,
+      imageurl
     } = req.body;
     const blog = new Blog({
+      imageurl,
       title,
       content,
       _user: req.user.id

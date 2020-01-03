@@ -21,6 +21,8 @@ require("@services/cache");
 // Routes
 const setupAuthRoutes = require("@routes/authRoutes");
 const setupBlogRoutes = require("@routes/blogRoutes");
+const setupUploadRoutes = require("@routes/uploadRoutes");
+
 
 // Server and DB Settings
 const PORT = process.env.PORT;
@@ -45,14 +47,15 @@ app.use(passport.session());
 // Server Routes
 setupAuthRoutes(app);
 setupBlogRoutes(app);
+setupUploadRoutes(app);
 
 // Production-only settings
-if (["production", "ci"].includes(process.env.NODE_ENV)) {
-  app.use(express.static("client/build"));
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve("client", "build", "index.html"))
-  );
-}
+// if (["production", "ci"].includes(process.env.NODE_ENV)) {
+app.use(express.static("client/build"));
+app.get("*", (req, res) =>
+  res.sendFile(path.resolve("client", "build", "index.html"))
+);
+// }
 
 // Start Server
 app.listen(PORT, () => console.log(`Listening on port`, PORT));

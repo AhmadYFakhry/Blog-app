@@ -8,7 +8,10 @@ import formFields from 'components/blogs/formFields'
 import { submitBlog } from 'actions'
 
 class BlogFormReview extends Component {
-  renderFields () {
+
+  state = { file: null }
+
+  renderFields() {
     const { formValues } = this.props
     return _.map(formFields, ({ name, label }) => (
       <div key={name}>
@@ -18,7 +21,7 @@ class BlogFormReview extends Component {
     ))
   }
 
-  renderButtons () {
+  renderButtons() {
     const { onCancel } = this.props
     return (
       <div>
@@ -36,10 +39,15 @@ class BlogFormReview extends Component {
     )
   }
 
-  onSubmit (e) {
+  onSubmit(e) {
     e.preventDefault()
     const { dispatch, history, formValues } = this.props
-    dispatch(submitBlog(formValues, history))
+    dispatch(submitBlog(formValues, this.state.file, history));
+  }
+
+  onFileChange(e) {
+    this.setState({ file: e.target.files });
+    console.log(e.target.files)
   }
 
   render() {
@@ -47,6 +55,10 @@ class BlogFormReview extends Component {
       <form onSubmit={e => this.onSubmit(e)}>
         <h5>Please confirm your entries</h5>
         {this.renderFields()}
+        <h5>Add An Image</h5>
+        <input onChange={
+          this.onFileChange.bind(this)
+        } type="file" accept="image/*" />
         {this.renderButtons()}
       </form>
     )

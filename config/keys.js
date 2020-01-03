@@ -11,5 +11,7 @@ module.exports = {
   mongoURI: process.env.MONGODB_URI,
   cookieKey: process.env.COOKIE_KEY,
   port: process.env.PORT,
-  redisUrl: process.env.REDIS_URL
+  redisUrl: process.env.REDIS_URL,
+  s3_access_id: process.env.S3_ACCESS_ID,
+  s3_secret: process.env.S3_SECRET
 };

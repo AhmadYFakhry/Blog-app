@@ -3,3 +3,5 @@ node_modules
 **.lock
 **.DS_Store
 build/
+.history
+index 2.js
