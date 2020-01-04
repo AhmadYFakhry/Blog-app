@@ -4,14 +4,14 @@ const { Schema } = mongoose
 const blogSchema = new Schema({
   title: String,
   content: String,
-  imageurl: String,
-  created: { 
-    type: Date, 
-    default: Date.now 
+  imgURL: String,
+  created: {
+    type: Date,
+    default: Date.now
   },
-  _user: { 
-    type: Schema.Types.ObjectId, 
-    ref: 'User' 
+  _user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   }
 })
 

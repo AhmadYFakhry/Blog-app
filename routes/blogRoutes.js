@@ -26,10 +26,11 @@ module.exports = app => {
     const {
       title,
       content,
-      imageurl
+      imageUrl
     } = req.body;
+    console.log(imageUrl);
     const blog = new Blog({
-      imageurl,
+      imgURL: imageUrl,
       title,
       content,
       _user: req.user.id

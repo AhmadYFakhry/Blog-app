@@ -42,6 +42,8 @@ class BlogFormReview extends Component {
   onSubmit(e) {
     e.preventDefault()
     const { dispatch, history, formValues } = this.props
+    console.log("onSubmit");
+    console.log(this.state);
     dispatch(submitBlog(formValues, this.state.file, history));
   }
 

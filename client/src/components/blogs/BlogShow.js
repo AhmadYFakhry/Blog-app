@@ -11,8 +11,9 @@ class BlogShow extends Component {
   }
 
   renderImage() {
-    if (this.props.blog.imageurl) {
-      return <img src={'https://fakhryah-blog-app.s3.ap-south-1.amazonaws.com/' + this.props.blog.imageurl} />
+    console.log(this.props.blog.imgURL);
+    if (this.props.blog.imgURL) {
+      return <img src={process.env.S3_BUCKET + this.props.blog.imgURL} />
     }
   }
 
@@ -26,6 +27,7 @@ class BlogShow extends Component {
       <>
         <h3>{title}</h3>
         <p>{content}</p>
+        {this.renderImage()}
       </>
     )
   }
