@@ -15,7 +15,7 @@ module.exports = app => {
         const s3 = new AWS.S3()
         const fileName = `${req.user.id}/${uuid()}.jpeg`;
         const s3Params = {
-            Bucket: process.env.S3_BUCKET,
+            Bucket: process.env.S3_BUCKET_NAME,
             Key: fileName,
             Expires: 500,
             ContentType: 'image/*',

@@ -30,7 +30,7 @@ describe("When logged in, ", () => {
             expect(contentErr).toEqual("You must provide a value")
         });
     });
-    describe('and using valid inputs', () => {
+    describe.only('and using valid inputs', () => {
         beforeEach(async () => {
             await page.type('.title input', "Test Title");
             await page.type('.content input', "Test content");

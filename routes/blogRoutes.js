@@ -26,7 +26,7 @@ module.exports = app => {
     const {
       title,
       content,
-      imageUrl
+      imageUrl = ''
     } = req.body;
     console.log(imageUrl);
     const blog = new Blog({

@@ -28,6 +28,7 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
+    "env-cmd": "^10.0.1",
     "http-proxy-middleware": "^0.19.1",
     "typescript": "^3.5.3"
   },
