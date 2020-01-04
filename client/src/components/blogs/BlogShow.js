@@ -13,7 +13,7 @@ class BlogShow extends Component {
   renderImage() {
     console.log(this.props.blog.imgURL);
     if (this.props.blog.imgURL) {
-      return <img src={process.env.S3_BUCKET + this.props.blog.imgURL} />
+      return <img alt="blog-image" src={process.env.S3_BUCKET + this.props.blog.imgURL} />
     }
   }
 
