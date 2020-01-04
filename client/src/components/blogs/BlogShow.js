@@ -11,8 +11,9 @@ class BlogShow extends Component {
   }
 
   renderImage() {
+
     if (this.props.blog.imgURL) {
-      return <img alt="added by user" src={process.env.S3_BUCKET_URL + this.props.blog.imgURL} />
+      return <img alt="added by user" src={'https://ahmadyfakhry-blog-app.s3.ca-central-1.amazonaws.com/' + this.props.blog.imgURL} />
     }
   }
 
